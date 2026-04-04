@@ -461,18 +461,40 @@ function submitLead() {
 
     if (!name || !phone || !email) { alert('Please fill in all fields'); return; }
 
+    const btn = document.querySelector('#step4 .btn-primary');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
     const leadData = {
         ...data, name, phone, email,
         gaps: data.gaps ? data.gaps.join('; ') : '',
         strengths: data.strengths ? data.strengths.join('; ') : '',
     };
 
-    // Send to WhatsApp
-    const msg = `New Qualified Lead via LeadForge\n\nEligibility Score: ${data.score}/100\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nCountry: ${data.country}\nLevel: ${data.level}\nAge: ${data.age}\nEducation: ${data.education}\nGrades: ${data.grades}\nEnglish: ${data.english}\nIELTS/PTE: ${data.testTaken === 'yes' ? data.testScore : 'Not taken'}\nTimeline: ${data.timeline}\nBudget: ${data.budget}\n\nGaps: ${data.gaps ? data.gaps.join(', ') : 'None'}`;
+    // GOOGLE APPS SCRIPT URL — replace after deploying form-backend.js
+    const SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
 
+    if (SCRIPT_URL !== "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE") {
+        // Send to Google Apps Script (auto-saves, auto-emails you AND Hurray)
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadData),
+        }).then(() => showThankYou(leadData)).catch(() => fallbackWhatsApp(leadData));
+    } else {
+        // Fallback: send to your WhatsApp directly
+        fallbackWhatsApp(leadData);
+    }
+}
+
+function fallbackWhatsApp(leadData) {
+    const msg = `New Qualified Lead via LeadForge\n\nEligibility Score: ${data.score}/100\n\nName: ${leadData.name}\nPhone: ${leadData.phone}\nEmail: ${leadData.email}\nCountry: ${data.country}\nLevel: ${data.level}\nAge: ${data.age}\nEducation: ${data.education}\nGrades: ${data.grades}\nEnglish: ${data.english}\nIELTS/PTE: ${data.testTaken === 'yes' ? data.testScore : 'Not taken'}\nTimeline: ${data.timeline}\nBudget: ${data.budget}\n\nGaps: ${leadData.gaps || 'None'}`;
     window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
+    showThankYou(leadData);
+}
 
-    // Hide form, show thank you
+function showThankYou(leadData) {
     document.querySelectorAll('#step4 .form-group, #step4 .btn-primary, #step4 .trust, #step4 .cta-box').forEach(el => el.style.display = 'none');
     document.getElementById('thankYou').classList.remove('hidden');
 }
