@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free IELTS Coaching + Study in Australia & UK — Limited Seats</title>
+    <title>Free IELTS Coaching + Study in Australia & UK — LeadForge</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -12,9 +12,14 @@
             min-height: 100vh; padding: 16px;
         }
         .container { max-width: 480px; margin: 0 auto; }
+        .brand {
+            text-align: center; padding: 12px 0 8px; color: rgba(255,255,255,0.9);
+            font-size: 13px; font-weight: 600; letter-spacing: 1px;
+        }
+        .brand span { opacity: 0.6; }
         .hero {
             background: #fff; border-radius: 16px; padding: 28px 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3); margin-bottom: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); margin-bottom: 12px;
         }
         .badge {
             display: inline-block; background: #e8f5e9; color: #2e7d32;
@@ -57,6 +62,7 @@
             color: #fff; transition: transform 0.1s;
         }
         .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(44,83,100,0.4); }
+        .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
         .trust { text-align: center; font-size: 11px; color: #999; margin-top: 10px; }
         .urgent {
             background: #fff3e0; border: 1px solid #ffcc80; border-radius: 8px;
@@ -71,6 +77,11 @@
             padding: 12px 24px; border-radius: 8px; text-decoration: none;
             font-weight: 700; margin-top: 16px; font-size: 15px;
         }
+        .footer {
+            text-align: center; padding: 8px 0 16px;
+            color: rgba(255,255,255,0.4); font-size: 11px;
+        }
+        .error-msg { color: #d32f2f; font-size: 13px; text-align: center; margin-top: 8px; display: none; }
         @media (max-width: 480px) {
             .hero { padding: 22px 18px; }
             .form-row { grid-template-columns: 1fr; }
@@ -80,10 +91,12 @@
 </head>
 <body>
     <div class="container">
+        <div class="brand">LEADFORGE <span>| Study Abroad Made Simple</span></div>
+
         <div class="hero">
             <span class="badge">Limited Free Seats</span>
             <h1>Get FREE IELTS Coaching + Complete Study Abroad Support for Australia & UK</h1>
-            <p class="subtitle">Partnered with a top Bangalore consultancy with <strong>10,000+ successful student visas</strong>. Free counselling, free IELTS training for eligible students.</p>
+            <p class="subtitle">LeadForge connects you with Bangalore's top overseas education consultancy — <strong>10,000+ successful student visas</strong>. Free counselling and IELTS training for eligible students.</p>
 
             <div class="stats">
                 <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Visas Processed</div></div>
@@ -102,8 +115,6 @@
             <div class="urgent">Only for students aged 19-29 targeting Australia or UK intake 2026-2027</div>
 
             <form id="leadForm">
-                <input type="hidden" name="_subject" value="New Student Lead — LeadForge">
-                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
                     <label>Your Full Name *</label>
                     <input type="text" name="name" required placeholder="Enter your full name">
@@ -173,7 +184,8 @@
                     </select>
                 </div>
                 <button type="submit" class="submit-btn">Get Free Counselling Session →</button>
-                <p class="trust">✅ 100% free for students. Your info is shared only with our verified partner.</p>
+                <p class="trust">✅ 100% free for students. Powered by LeadForge.</p>
+                <p class="error-msg" id="errorMsg">Something went wrong. Please WhatsApp us directly instead.</p>
             </form>
 
             <div id="thankYou" class="thank-you" style="display:none;">
@@ -181,39 +193,57 @@
                 <p>We've shared your details with our verified education partner in Bangalore.</p>
                 <p style="margin-top:8px;"><strong>What happens next:</strong></p>
                 <p>A counselling expert from our partner will call or WhatsApp you within 24 hours to discuss your study abroad options — completely free.</p>
-                <p style="margin-top:8px; font-size:13px; color:#888;">When they reach out, just let them know you signed up through <strong>LeadForge</strong> for the free counselling offer.</p>
+                <p style="margin-top:8px; font-size:13px; color:#888;">When they reach out, let them know you signed up through <strong>LeadForge</strong> for the free counselling offer.</p>
                 <p style="margin-top:12px; font-size:13px; color:#888;">Want faster response? Message us directly:</p>
-                <a href="https://wa.me/918867735035?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20IELTS%20coaching%20%2B%20study%20abroad%20offer%20on%20your%20website" class="whatsapp-btn">💬 WhatsApp Us Now</a>
+                <a href="https://wa.me/918867735035?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20IELTS%20coaching%20%2B%20study%20abroad%20offer%20on%20LeadForge" class="whatsapp-btn">💬 WhatsApp Us Now</a>
             </div>
         </div>
+
+        <div class="footer">LeadForge — Connecting students with the right education partners</div>
     </div>
 
     <script>
+        // ============================================================
+        // IMPORTANT: Replace this URL with your Google Apps Script URL
+        // after deploying landing/form-backend.js
+        // ============================================================
+        const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
             const btn = form.querySelector('.submit-btn');
-            const data = new FormData(form);
+            const errorMsg = document.getElementById('errorMsg');
+            const data = Object.fromEntries(new FormData(form).entries());
 
             btn.disabled = true;
             btn.textContent = 'Submitting...';
+            errorMsg.style.display = 'none';
 
-            // Send to FormSubmit.co — emails you every submission (free, no signup)
-            fetch('https://formsubmit.co/ajax/leadforge46@gmail.com', {
+            if (GOOGLE_SCRIPT_URL === "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE") {
+                // Google Script not configured yet — fall back to WhatsApp
+                const msg = `New Lead (from website):\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}\nAge: ${data.age}\nScore: ${data.current_score || 'N/A'}\nTimeline: ${data.timeline}\nEnglish: ${data.english_level}`;
+                window.open(`https://wa.me/918867735035?text=${encodeURIComponent(msg)}`, '_blank');
+                form.style.display = 'none';
+                document.getElementById('thankYou').style.display = 'block';
+                return;
+            }
+
+            fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(Object.fromEntries(data.entries())),
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
             })
-            .then(r => r.json())
-            .then(result => {
-                // Show thank you regardless
+            .then(() => {
                 form.style.display = 'none';
                 document.getElementById('thankYou').style.display = 'block';
             })
             .catch(() => {
-                // Still show thank you — data was likely sent
-                form.style.display = 'none';
-                document.getElementById('thankYou').style.display = 'block';
+                // Fallback: send via WhatsApp
+                errorMsg.style.display = 'block';
+                btn.disabled = false;
+                btn.textContent = 'Get Free Counselling Session →';
             });
         });
     </script>
