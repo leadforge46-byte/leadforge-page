@@ -102,6 +102,8 @@
             <div class="urgent">Only for students aged 19-29 targeting Australia or UK intake 2026-2027</div>
 
             <form id="leadForm">
+                <input type="hidden" name="_subject" value="New Student Lead — LeadForge">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
                     <label>Your Full Name *</label>
                     <input type="text" name="name" required placeholder="Enter your full name">
@@ -186,38 +188,31 @@
     <script>
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const data = Object.fromEntries(new FormData(this).entries());
-            data.timestamp = new Date().toISOString();
-            data.source = 'landing_page';
+            const form = this;
+            const btn = form.querySelector('.submit-btn');
+            const data = new FormData(form);
 
-            // Save locally
-            const leads = JSON.parse(localStorage.getItem('captured_leads') || '[]');
-            leads.push(data);
-            localStorage.setItem('captured_leads', JSON.stringify(leads));
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
 
-            // Try posting to local server
-            fetch('/api/lead', {
+            // Send to FormSubmit.co — emails you every submission (free, no signup)
+            fetch('https://formsubmit.co/ajax/leadforge46@gmail.com', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data),
-            }).catch(() => {});
-
-            // Show thank you
-            document.getElementById('leadForm').style.display = 'none';
-            document.getElementById('thankYou').style.display = 'block';
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(data.entries())),
+            })
+            .then(r => r.json())
+            .then(result => {
+                // Show thank you regardless
+                form.style.display = 'none';
+                document.getElementById('thankYou').style.display = 'block';
+            })
+            .catch(() => {
+                // Still show thank you — data was likely sent
+                form.style.display = 'none';
+                document.getElementById('thankYou').style.display = 'block';
+            });
         });
-
-        // Export leads from console: exportLeads()
-        window.exportLeads = function() {
-            const leads = JSON.parse(localStorage.getItem('captured_leads') || '[]');
-            if (!leads.length) { alert('No leads captured yet'); return; }
-            const headers = Object.keys(leads[0]);
-            const csv = [headers.join(','), ...leads.map(l => headers.map(h => '"'+(l[h]||'')+'"').join(','))].join('\n');
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(new Blob([csv], {type: 'text/csv'}));
-            a.download = 'leads_' + new Date().toISOString().slice(0,10) + '.csv';
-            a.click();
-        };
     </script>
 </body>
 </html>
