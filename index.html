@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free IELTS Coaching + Study in Australia & UK — LeadForge</title>
+    <title>Study in Australia & UK — Expert Guidance | LeadForge</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -22,7 +22,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3); margin-bottom: 12px;
         }
         .badge {
-            display: inline-block; background: #e8f5e9; color: #2e7d32;
+            display: inline-block; background: #e3f2fd; color: #1565c0;
             font-size: 12px; font-weight: 700; padding: 4px 12px;
             border-radius: 20px; margin-bottom: 12px; text-transform: uppercase;
         }
@@ -64,11 +64,11 @@
         .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(44,83,100,0.4); }
         .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
         .trust { text-align: center; font-size: 11px; color: #999; margin-top: 10px; }
-        .urgent {
-            background: #fff3e0; border: 1px solid #ffcc80; border-radius: 8px;
-            padding: 10px 14px; margin-bottom: 16px; font-size: 13px; color: #e65100;
-            text-align: center;
+        .qualify-box {
+            background: #f5f5f5; border-radius: 8px;
+            padding: 12px 14px; margin-bottom: 16px; font-size: 13px; color: #444;
         }
+        .qualify-box strong { color: #1a1a2e; }
         .thank-you { text-align: center; padding: 40px 20px; }
         .thank-you h2 { font-size: 24px; color: #1a1a2e; margin-bottom: 12px; }
         .thank-you p { font-size: 14px; color: #555; line-height: 1.6; }
@@ -81,7 +81,6 @@
             text-align: center; padding: 8px 0 16px;
             color: rgba(255,255,255,0.4); font-size: 11px;
         }
-        .error-msg { color: #d32f2f; font-size: 13px; text-align: center; margin-top: 8px; display: none; }
         @media (max-width: 480px) {
             .hero { padding: 22px 18px; }
             .form-row { grid-template-columns: 1fr; }
@@ -94,25 +93,27 @@
         <div class="brand">LEADFORGE <span>| Study Abroad Made Simple</span></div>
 
         <div class="hero">
-            <span class="badge">Limited Free Seats</span>
-            <h1>Get FREE IELTS Coaching + Complete Study Abroad Support for Australia & UK</h1>
-            <p class="subtitle">LeadForge connects you with Bangalore's top overseas education consultancy — <strong>10,000+ successful student visas</strong>. Free counselling and IELTS training for eligible students.</p>
+            <span class="badge">Australia & UK — 2026/2027 Intake</span>
+            <h1>Get Expert Guidance to Study in Australia or the UK</h1>
+            <p class="subtitle">We connect serious students with one of Bangalore's most experienced overseas education consultancies. From IELTS prep to visa approval — get the right guidance to make it happen.</p>
 
             <div class="stats">
-                <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Visas Processed</div></div>
-                <div class="stat"><div class="stat-num">35K+</div><div class="stat-label">Students Trained</div></div>
+                <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Visas Approved</div></div>
+                <div class="stat"><div class="stat-num">35K+</div><div class="stat-label">Students Guided</div></div>
                 <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
             </div>
 
             <ul class="benefits">
-                <li><span class="icon">🎓</span> Free IELTS/PTE coaching for eligible students</li>
-                <li><span class="icon">🏫</span> University selection & application support</li>
-                <li><span class="icon">✈️</span> Visa processing with highest success rate</li>
+                <li><span class="icon">🎯</span> Personalized university shortlisting based on your profile</li>
+                <li><span class="icon">📝</span> IELTS/PTE preparation with expert trainers</li>
+                <li><span class="icon">✈️</span> Visa processing with the highest success rate in Bangalore</li>
+                <li><span class="icon">💼</span> SOP, LOR & application support</li>
                 <li><span class="icon">💰</span> Education loan & scholarship guidance</li>
-                <li><span class="icon">🏠</span> Accommodation & pre-departure help</li>
             </ul>
 
-            <div class="urgent">Only for students aged 19-29 targeting Australia or UK intake 2026-2027</div>
+            <div class="qualify-box">
+                <strong>Who this is for:</strong> Students aged 19-29 who are serious about studying in Australia or the UK and ready to take the next step. You should be comfortable in English and planning for the 2026 or 2027 intake.
+            </div>
 
             <form id="leadForm">
                 <div class="form-group">
@@ -151,16 +152,16 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>IELTS/PTE Score (if taken)</label>
-                        <input type="text" name="current_score" placeholder="e.g., 6.5 or N/A">
+                        <input type="text" name="current_score" placeholder="e.g., 6.5 or Not yet">
                     </div>
                     <div class="form-group">
-                        <label>When do you want to start? *</label>
+                        <label>When do you plan to start? *</label>
                         <select name="timeline" required>
                             <option value="">Select...</option>
-                            <option value="immediate">Immediately</option>
-                            <option value="1_month">Within 1 Month</option>
-                            <option value="3_months">Within 3 Months</option>
-                            <option value="6_months">Within 6 Months</option>
+                            <option value="immediate">Ready now</option>
+                            <option value="1_month">Within 1 month</option>
+                            <option value="3_months">Within 3 months</option>
+                            <option value="6_months">Within 6 months</option>
                         </select>
                     </div>
                 </div>
@@ -169,33 +170,31 @@
                     <select name="english_level" required>
                         <option value="">Select...</option>
                         <option value="fluent">Fluent — comfortable speaking & writing</option>
-                        <option value="good">Good — can hold conversations easily</option>
-                        <option value="basic">Basic — still learning</option>
+                        <option value="good">Good — can hold conversations</option>
+                        <option value="basic">Basic — still improving</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>What do you need help with?</label>
-                    <select name="service_needed">
+                    <label>What do you need help with? *</label>
+                    <select name="service_needed" required>
                         <option value="">Select...</option>
-                        <option value="ielts">IELTS/PTE Coaching</option>
+                        <option value="ielts">IELTS/PTE Preparation</option>
                         <option value="university">University Selection & Applications</option>
                         <option value="visa">Visa Processing</option>
-                        <option value="all">Everything (End-to-End Support)</option>
+                        <option value="all">Complete End-to-End Support</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Get Free Counselling Session →</button>
-                <p class="trust">✅ 100% free for students. Powered by LeadForge.</p>
-                <p class="error-msg" id="errorMsg">Something went wrong. Please WhatsApp us directly instead.</p>
+                <button type="submit" class="submit-btn">Book Your Consultation →</button>
+                <p class="trust">Your details are shared only with our verified education partner in Bangalore.</p>
             </form>
 
             <div id="thankYou" class="thank-you" style="display:none;">
-                <h2>You're In! 🎉</h2>
-                <p>We've shared your details with our verified education partner in Bangalore.</p>
-                <p style="margin-top:8px;"><strong>What happens next:</strong></p>
-                <p>A counselling expert from our partner will call or WhatsApp you within 24 hours to discuss your study abroad options — completely free.</p>
-                <p style="margin-top:8px; font-size:13px; color:#888;">When they reach out, let them know you signed up through <strong>LeadForge</strong> for the free counselling offer.</p>
-                <p style="margin-top:12px; font-size:13px; color:#888;">Want faster response? Message us directly:</p>
-                <a href="https://wa.me/918217494016?text=Hi%2C%20I%20just%20signed%20up%20for%20the%20free%20IELTS%20coaching%20%2B%20study%20abroad%20offer%20on%20LeadForge" class="whatsapp-btn">💬 WhatsApp Us Now</a>
+                <h2>Consultation Booked! ✓</h2>
+                <p>An overseas education expert will reach out to you on WhatsApp within 24 hours to discuss your profile and options.</p>
+                <p style="margin-top:12px;"><strong>What to expect:</strong></p>
+                <p>They'll review your academic background, target country, and timeline — then recommend the best path forward for you.</p>
+                <p style="margin-top:12px; font-size:13px; color:#888;">Need to reach us sooner?</p>
+                <a href="https://wa.me/918217494016?text=Hi%2C%20I%20just%20booked%20a%20consultation%20for%20studying%20abroad%20on%20the%20LeadForge%20website" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
             </div>
         </div>
 
@@ -203,26 +202,20 @@
     </div>
 
     <script>
-        // ============================================================
-        // IMPORTANT: Replace this URL with your Google Apps Script URL
-        // after deploying landing/form-backend.js
-        // ============================================================
+        // Replace with your Google Apps Script URL after deploying form-backend.js
         const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
             const btn = form.querySelector('.submit-btn');
-            const errorMsg = document.getElementById('errorMsg');
             const data = Object.fromEntries(new FormData(form).entries());
 
             btn.disabled = true;
-            btn.textContent = 'Submitting...';
-            errorMsg.style.display = 'none';
+            btn.textContent = 'Booking...';
 
             if (GOOGLE_SCRIPT_URL === "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE") {
-                // Google Script not configured yet — fall back to WhatsApp
-                const msg = `New Lead (from website):\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}\nAge: ${data.age}\nScore: ${data.current_score || 'N/A'}\nTimeline: ${data.timeline}\nEnglish: ${data.english_level}`;
+                const msg = `New Lead via LeadForge:\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}\nAge: ${data.age}\nIELTS Score: ${data.current_score || 'Not taken'}\nTimeline: ${data.timeline}\nEnglish: ${data.english_level}\nNeeds: ${data.service_needed}`;
                 window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
                 form.style.display = 'none';
                 document.getElementById('thankYou').style.display = 'block';
@@ -240,10 +233,10 @@
                 document.getElementById('thankYou').style.display = 'block';
             })
             .catch(() => {
-                // Fallback: send via WhatsApp
-                errorMsg.style.display = 'block';
-                btn.disabled = false;
-                btn.textContent = 'Get Free Counselling Session →';
+                const msg = `New Lead via LeadForge:\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}`;
+                window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
+                form.style.display = 'none';
+                document.getElementById('thankYou').style.display = 'block';
             });
         });
     </script>
