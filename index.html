@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study in Australia & UK — Expert Guidance | LeadForge</title>
+    <title>Do You Qualify to Study in Australia or UK? — Free Check | LeadForge</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -11,234 +11,471 @@
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             min-height: 100vh; padding: 16px;
         }
-        .container { max-width: 480px; margin: 0 auto; }
-        .brand {
-            text-align: center; padding: 12px 0 8px; color: rgba(255,255,255,0.9);
-            font-size: 13px; font-weight: 600; letter-spacing: 1px;
-        }
+        .container { max-width: 520px; margin: 0 auto; }
+        .brand { text-align: center; padding: 12px 0 8px; color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; letter-spacing: 1px; }
         .brand span { opacity: 0.6; }
-        .hero {
+        .card {
             background: #fff; border-radius: 16px; padding: 28px 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3); margin-bottom: 12px;
         }
-        .badge {
-            display: inline-block; background: #e3f2fd; color: #1565c0;
-            font-size: 12px; font-weight: 700; padding: 4px 12px;
-            border-radius: 20px; margin-bottom: 12px; text-transform: uppercase;
-        }
-        h1 { font-size: 22px; color: #1a1a2e; line-height: 1.3; margin-bottom: 8px; }
+        h1 { font-size: 22px; color: #1a1a2e; line-height: 1.3; margin-bottom: 6px; }
+        h2 { font-size: 18px; color: #1a1a2e; margin-bottom: 12px; }
         .subtitle { font-size: 14px; color: #555; line-height: 1.5; margin-bottom: 20px; }
-        .benefits { list-style: none; margin-bottom: 20px; }
-        .benefits li {
-            padding: 8px 0; font-size: 14px; color: #333;
-            border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;
+        .step-indicator { display: flex; gap: 6px; margin-bottom: 20px; }
+        .step-dot { flex: 1; height: 4px; border-radius: 4px; background: #e0e0e0; transition: background 0.3s; }
+        .step-dot.active { background: #2c5364; }
+        .step-dot.done { background: #4caf50; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px; }
+        .form-group select, .form-group input {
+            width: 100%; padding: 12px; border: 1.5px solid #ddd; border-radius: 8px;
+            font-size: 15px; background: #fafafa;
         }
-        .benefits li:last-child { border: none; }
-        .benefits .icon { margin-right: 10px; font-size: 18px; }
-        .stats {
-            display: grid; grid-template-columns: 1fr 1fr 1fr;
-            gap: 8px; margin-bottom: 20px; text-align: center;
-        }
-        .stat { background: #f8f9ff; border-radius: 8px; padding: 12px 8px; }
-        .stat-num { font-size: 20px; font-weight: 800; color: #2c5364; }
-        .stat-label { font-size: 11px; color: #777; margin-top: 2px; }
-        .form-group { margin-bottom: 14px; }
-        .form-group label {
-            display: block; font-size: 12px; font-weight: 600;
-            color: #333; margin-bottom: 4px;
-        }
-        .form-group input, .form-group select {
-            width: 100%; padding: 11px 12px; border: 1.5px solid #ddd;
-            border-radius: 8px; font-size: 14px; background: #fafafa;
-        }
-        .form-group input:focus, .form-group select:focus {
-            outline: none; border-color: #2c5364; background: #fff;
-        }
+        .form-group select:focus, .form-group input:focus { outline: none; border-color: #2c5364; background: #fff; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .submit-btn {
+        .btn {
             width: 100%; padding: 14px; border: none; border-radius: 8px;
-            font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 4px;
-            background: linear-gradient(135deg, #2c5364, #203a43);
-            color: #fff; transition: transform 0.1s;
+            font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px;
+            transition: transform 0.1s;
         }
-        .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(44,83,100,0.4); }
-        .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-        .trust { text-align: center; font-size: 11px; color: #999; margin-top: 10px; }
-        .qualify-box {
-            background: #f5f5f5; border-radius: 8px;
-            padding: 12px 14px; margin-bottom: 16px; font-size: 13px; color: #444;
+        .btn-primary { background: linear-gradient(135deg, #2c5364, #203a43); color: #fff; }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(44,83,100,0.4); }
+        .btn-secondary { background: #f5f5f5; color: #333; margin-top: 8px; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+        .option-card {
+            border: 2px solid #e0e0e0; border-radius: 10px; padding: 14px 12px;
+            text-align: center; cursor: pointer; transition: all 0.2s; font-size: 14px;
         }
-        .qualify-box strong { color: #1a1a2e; }
-        .thank-you { text-align: center; padding: 40px 20px; }
-        .thank-you h2 { font-size: 24px; color: #1a1a2e; margin-bottom: 12px; }
-        .thank-you p { font-size: 14px; color: #555; line-height: 1.6; }
+        .option-card:hover { border-color: #2c5364; background: #f8f9ff; }
+        .option-card.selected { border-color: #2c5364; background: #e8eef2; font-weight: 600; }
+        .option-card .icon { font-size: 24px; display: block; margin-bottom: 6px; }
+        .hidden { display: none; }
+
+        /* Results */
+        .score-circle {
+            width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 16px;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+            font-size: 36px; font-weight: 800; color: #fff;
+        }
+        .score-high { background: linear-gradient(135deg, #43a047, #66bb6a); }
+        .score-med { background: linear-gradient(135deg, #f57c00, #ffa726); }
+        .score-low { background: linear-gradient(135deg, #e53935, #ef5350); }
+        .score-label { font-size: 11px; font-weight: 400; margin-top: 2px; }
+        .result-section { margin: 16px 0; padding: 14px; background: #f8f9ff; border-radius: 10px; }
+        .result-section h3 { font-size: 14px; color: #1a1a2e; margin-bottom: 8px; }
+        .result-item { font-size: 13px; color: #444; padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+        .gap-item { font-size: 13px; color: #c62828; padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; }
+        .gap-item .fix { font-size: 12px; color: #555; margin-top: 2px; }
+        .cta-box {
+            background: linear-gradient(135deg, #2c5364, #203a43); color: #fff;
+            border-radius: 12px; padding: 20px; text-align: center; margin-top: 16px;
+        }
+        .cta-box h3 { font-size: 16px; margin-bottom: 8px; }
+        .cta-box p { font-size: 13px; opacity: 0.9; margin-bottom: 14px; line-height: 1.5; }
+        .cta-box .btn { background: #fff; color: #2c5364; }
         .whatsapp-btn {
             display: inline-block; background: #25d366; color: #fff;
             padding: 12px 24px; border-radius: 8px; text-decoration: none;
-            font-weight: 700; margin-top: 16px; font-size: 15px;
+            font-weight: 700; margin-top: 12px; font-size: 15px;
         }
-        .footer {
-            text-align: center; padding: 8px 0 16px;
-            color: rgba(255,255,255,0.4); font-size: 11px;
-        }
+        .trust { text-align: center; font-size: 11px; color: #999; margin-top: 10px; }
+        .footer { text-align: center; padding: 8px 0 16px; color: rgba(255,255,255,0.4); font-size: 11px; }
+        .stat-row { display: flex; justify-content: center; gap: 24px; margin: 12px 0; }
+        .stat-row .stat { text-align: center; }
+        .stat-row .num { font-size: 20px; font-weight: 800; color: #2c5364; }
+        .stat-row .lbl { font-size: 11px; color: #777; }
         @media (max-width: 480px) {
-            .hero { padding: 22px 18px; }
-            .form-row { grid-template-columns: 1fr; }
+            .card { padding: 22px 18px; }
+            .form-row, .option-grid { grid-template-columns: 1fr; }
             h1 { font-size: 19px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="brand">LEADFORGE <span>| Study Abroad Made Simple</span></div>
+<div class="container">
+    <div class="brand">LEADFORGE <span>| Study Abroad Made Simple</span></div>
 
-        <div class="hero">
-            <span class="badge">Australia & UK — 2026/2027 Intake</span>
-            <h1>Get Expert Guidance to Study in Australia or the UK</h1>
-            <p class="subtitle">We connect serious students with one of Bangalore's most experienced overseas education consultancies. From IELTS prep to visa approval — get the right guidance to make it happen.</p>
+    <div class="card">
+        <!-- STEP INDICATOR -->
+        <div class="step-indicator">
+            <div class="step-dot active" id="dot1"></div>
+            <div class="step-dot" id="dot2"></div>
+            <div class="step-dot" id="dot3"></div>
+            <div class="step-dot" id="dot4"></div>
+        </div>
 
-            <div class="stats">
-                <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Visas Approved</div></div>
-                <div class="stat"><div class="stat-num">35K+</div><div class="stat-label">Students Guided</div></div>
-                <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years Experience</div></div>
+        <!-- STEP 1: Country & Goal -->
+        <div id="step1">
+            <h1>Do You Qualify to Study in Australia or the UK?</h1>
+            <p class="subtitle">Answer 8 quick questions. Get your eligibility score, university matches, and a personalized gap analysis — in under 2 minutes.</p>
+            <div class="stat-row">
+                <div class="stat"><div class="num">47K+</div><div class="lbl">Students Assessed</div></div>
+                <div class="stat"><div class="num">92%</div><div class="lbl">Accuracy Rate</div></div>
+            </div>
+            <label style="font-size:13px;font-weight:600;color:#333;margin-bottom:8px;display:block;">Where do you want to study?</label>
+            <div class="option-grid" id="countryOptions">
+                <div class="option-card" data-value="Australia" onclick="selectOption(this,'country')">
+                    <span class="icon">🇦🇺</span> Australia
+                </div>
+                <div class="option-card" data-value="UK" onclick="selectOption(this,'country')">
+                    <span class="icon">🇬🇧</span> United Kingdom
+                </div>
+            </div>
+            <label style="font-size:13px;font-weight:600;color:#333;margin-bottom:8px;display:block;">What level of study?</label>
+            <div class="option-grid" id="levelOptions">
+                <div class="option-card" data-value="bachelors" onclick="selectOption(this,'level')">
+                    <span class="icon">🎓</span> Bachelor's
+                </div>
+                <div class="option-card" data-value="masters" onclick="selectOption(this,'level')">
+                    <span class="icon">🎯</span> Master's
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="nextStep(2)" id="btn1" disabled>Next →</button>
+        </div>
+
+        <!-- STEP 2: Academic Profile -->
+        <div id="step2" class="hidden">
+            <h2>Your Academic Profile</h2>
+            <div class="form-group">
+                <label>Your Age</label>
+                <select id="age" onchange="checkStep2()">
+                    <option value="">Select...</option>
+                    <option value="18-20">18 - 20</option>
+                    <option value="21-23">21 - 23</option>
+                    <option value="24-26">24 - 26</option>
+                    <option value="27-29">27 - 29</option>
+                    <option value="30+">30+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Highest Education Completed</label>
+                <select id="education" onchange="checkStep2()">
+                    <option value="">Select...</option>
+                    <option value="12th">12th / High School</option>
+                    <option value="bachelors">Bachelor's Degree</option>
+                    <option value="masters">Master's Degree</option>
+                    <option value="diploma">Diploma</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Academic Percentage / CGPA</label>
+                    <input type="text" id="grades" placeholder="e.g., 72% or 7.5" onchange="checkStep2()">
+                </div>
+                <div class="form-group">
+                    <label>English Proficiency</label>
+                    <select id="english" onchange="checkStep2()">
+                        <option value="">Select...</option>
+                        <option value="fluent">Fluent</option>
+                        <option value="good">Good</option>
+                        <option value="basic">Basic</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="nextStep(3)" id="btn2" disabled>Next →</button>
+            <button class="btn btn-secondary" onclick="nextStep(1)">← Back</button>
+        </div>
+
+        <!-- STEP 3: Readiness -->
+        <div id="step3" class="hidden">
+            <h2>Your Readiness</h2>
+            <div class="form-group">
+                <label>Have you taken IELTS/PTE?</label>
+                <select id="testTaken" onchange="toggleScore(); checkStep3();">
+                    <option value="">Select...</option>
+                    <option value="yes">Yes, I have a score</option>
+                    <option value="no">Not yet</option>
+                </select>
+            </div>
+            <div class="form-group" id="scoreGroup" style="display:none;">
+                <label>Your IELTS Band / PTE Score</label>
+                <input type="text" id="testScore" placeholder="e.g., 6.5 or 58">
+            </div>
+            <div class="form-group">
+                <label>When do you plan to start?</label>
+                <select id="timeline" onchange="checkStep3()">
+                    <option value="">Select...</option>
+                    <option value="immediate">Ready now — next intake</option>
+                    <option value="3months">Within 3 months</option>
+                    <option value="6months">Within 6 months</option>
+                    <option value="1year">Next year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Estimated Budget (including loans)</label>
+                <select id="budget" onchange="checkStep3()">
+                    <option value="">Select...</option>
+                    <option value="under15">Under ₹15 lakhs/year</option>
+                    <option value="15to25">₹15 - 25 lakhs/year</option>
+                    <option value="25to40">₹25 - 40 lakhs/year</option>
+                    <option value="above40">₹40+ lakhs/year</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="calculateResults()" id="btn3" disabled>See My Results →</button>
+            <button class="btn btn-secondary" onclick="nextStep(2)">← Back</button>
+        </div>
+
+        <!-- STEP 4: RESULTS -->
+        <div id="step4" class="hidden">
+            <div style="text-align:center;">
+                <h2>Your Eligibility Report</h2>
+                <div class="score-circle" id="scoreCircle">
+                    <span id="scoreNum">--</span>
+                    <span class="score-label">out of 100</span>
+                </div>
+                <p id="scoreVerdict" style="font-size:15px;font-weight:600;margin-bottom:4px;"></p>
+                <p id="scoreSub" style="font-size:13px;color:#666;margin-bottom:16px;"></p>
             </div>
 
-            <ul class="benefits">
-                <li><span class="icon">🎯</span> Personalized university shortlisting based on your profile</li>
-                <li><span class="icon">📝</span> IELTS/PTE preparation with expert trainers</li>
-                <li><span class="icon">✈️</span> Visa processing with the highest success rate in Bangalore</li>
-                <li><span class="icon">💼</span> SOP, LOR & application support</li>
-                <li><span class="icon">💰</span> Education loan & scholarship guidance</li>
-            </ul>
-
-            <div class="qualify-box">
-                <strong>Who this is for:</strong> Students aged 19-29 who are serious about studying in Australia or the UK and ready to take the next step. You should be comfortable in English and planning for the 2026 or 2027 intake.
+            <div class="result-section">
+                <h3>✅ What's Working For You</h3>
+                <div id="strengths"></div>
             </div>
 
-            <form id="leadForm">
+            <div class="result-section" style="background:#fff5f5;">
+                <h3>⚠️ Gaps You Need to Close</h3>
+                <div id="gaps"></div>
+            </div>
+
+            <div class="result-section">
+                <h3>🎓 University Match</h3>
+                <p id="uniMatch" style="font-size:13px;color:#444;"></p>
+            </div>
+
+            <div class="result-section">
+                <h3>💰 Cost Estimate</h3>
+                <p id="costEstimate" style="font-size:13px;color:#444;"></p>
+            </div>
+
+            <div class="cta-box">
+                <h3>Close These Gaps With Expert Help</h3>
+                <p>Our education partner in Bangalore (10,000+ successful visas, 15+ years) can help you with IELTS prep, university selection, visa processing, and scholarships — personalized to your profile.</p>
+                <p style="font-size:12px;opacity:0.7;">Fill in your details to get a callback from an expert who will review your specific situation.</p>
+            </div>
+
+            <div style="margin-top:16px;">
                 <div class="form-group">
                     <label>Your Full Name *</label>
-                    <input type="text" name="name" required placeholder="Enter your full name">
+                    <input type="text" id="leadName" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
                     <label>WhatsApp Number *</label>
-                    <input type="tel" name="phone" required placeholder="e.g., 9876543210">
+                    <input type="tel" id="leadPhone" required placeholder="e.g., 9876543210">
                 </div>
                 <div class="form-group">
                     <label>Email *</label>
-                    <input type="email" name="email" required placeholder="your@email.com">
+                    <input type="email" id="leadEmail" required placeholder="your@email.com">
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Target Country *</label>
-                        <select name="target_country" required>
-                            <option value="">Select...</option>
-                            <option value="Australia">Australia</option>
-                            <option value="UK">United Kingdom</option>
-                            <option value="Both">Both / Undecided</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Your Age *</label>
-                        <select name="age" required>
-                            <option value="">Select...</option>
-                            <option value="19-22">19 - 22</option>
-                            <option value="23-25">23 - 25</option>
-                            <option value="26-29">26 - 29</option>
-                            <option value="other">30+</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>IELTS/PTE Score (if taken)</label>
-                        <input type="text" name="current_score" placeholder="e.g., 6.5 or Not yet">
-                    </div>
-                    <div class="form-group">
-                        <label>When do you plan to start? *</label>
-                        <select name="timeline" required>
-                            <option value="">Select...</option>
-                            <option value="immediate">Ready now</option>
-                            <option value="1_month">Within 1 month</option>
-                            <option value="3_months">Within 3 months</option>
-                            <option value="6_months">Within 6 months</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>English Proficiency *</label>
-                    <select name="english_level" required>
-                        <option value="">Select...</option>
-                        <option value="fluent">Fluent — comfortable speaking & writing</option>
-                        <option value="good">Good — can hold conversations</option>
-                        <option value="basic">Basic — still improving</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>What do you need help with? *</label>
-                    <select name="service_needed" required>
-                        <option value="">Select...</option>
-                        <option value="ielts">IELTS/PTE Preparation</option>
-                        <option value="university">University Selection & Applications</option>
-                        <option value="visa">Visa Processing</option>
-                        <option value="all">Complete End-to-End Support</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">Book Your Consultation →</button>
-                <p class="trust">Your details are shared only with our verified education partner in Bangalore.</p>
-            </form>
+                <button class="btn btn-primary" onclick="submitLead()">Get Expert Guidance on My Profile →</button>
+                <p class="trust">Your details are shared only with our verified education partner.</p>
+            </div>
 
-            <div id="thankYou" class="thank-you" style="display:none;">
-                <h2>Consultation Booked! ✓</h2>
-                <p>An overseas education expert will reach out to you on WhatsApp within 24 hours to discuss your profile and options.</p>
-                <p style="margin-top:12px;"><strong>What to expect:</strong></p>
-                <p>They'll review your academic background, target country, and timeline — then recommend the best path forward for you.</p>
-                <p style="margin-top:12px; font-size:13px; color:#888;">Need to reach us sooner?</p>
-                <a href="https://wa.me/918217494016?text=Hi%2C%20I%20just%20booked%20a%20consultation%20for%20studying%20abroad%20on%20the%20LeadForge%20website" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
+            <!-- Thank You -->
+            <div id="thankYou" class="hidden" style="text-align:center;padding:20px 0;">
+                <h2>An Expert Will Call You ✓</h2>
+                <p style="font-size:14px;color:#555;line-height:1.6;">A study abroad consultant will review your eligibility report and reach out on WhatsApp within 24 hours with personalized recommendations.</p>
+                <p style="margin-top:12px;font-size:13px;color:#888;">Need to reach us sooner?</p>
+                <a href="https://wa.me/918217494016?text=Hi%2C%20I%20just%20completed%20the%20eligibility%20check%20on%20LeadForge.%20My%20score%20was%20[SCORE]%25.%20I%27d%20like%20expert%20guidance." class="whatsapp-btn" id="waBtn">💬 Message Us on WhatsApp</a>
             </div>
         </div>
-
-        <div class="footer">LeadForge — Connecting students with the right education partners</div>
     </div>
 
-    <script>
-        // Replace with your Google Apps Script URL after deploying form-backend.js
-        const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
+    <div class="footer">LeadForge — Connecting students with the right education partners</div>
+</div>
 
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const btn = form.querySelector('.submit-btn');
-            const data = Object.fromEntries(new FormData(form).entries());
+<script>
+const data = { country: '', level: '', selections: 0 };
 
-            btn.disabled = true;
-            btn.textContent = 'Booking...';
+function selectOption(el, field) {
+    data[field] = el.dataset.value;
+    el.parentElement.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    data.selections++;
+    if (data.country && data.level) document.getElementById('btn1').disabled = false;
+}
 
-            if (GOOGLE_SCRIPT_URL === "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE") {
-                const msg = `New Lead via LeadForge:\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}\nAge: ${data.age}\nIELTS Score: ${data.current_score || 'Not taken'}\nTimeline: ${data.timeline}\nEnglish: ${data.english_level}\nNeeds: ${data.service_needed}`;
-                window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
-                form.style.display = 'none';
-                document.getElementById('thankYou').style.display = 'block';
-                return;
-            }
+function toggleScore() {
+    document.getElementById('scoreGroup').style.display =
+        document.getElementById('testTaken').value === 'yes' ? 'block' : 'none';
+}
 
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-            })
-            .then(() => {
-                form.style.display = 'none';
-                document.getElementById('thankYou').style.display = 'block';
-            })
-            .catch(() => {
-                const msg = `New Lead via LeadForge:\n\nName: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email}\nCountry: ${data.target_country}`;
-                window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
-                form.style.display = 'none';
-                document.getElementById('thankYou').style.display = 'block';
-            });
-        });
-    </script>
+function checkStep2() {
+    const ok = document.getElementById('age').value &&
+               document.getElementById('education').value &&
+               document.getElementById('english').value;
+    document.getElementById('btn2').disabled = !ok;
+}
+
+function checkStep3() {
+    const ok = document.getElementById('testTaken').value &&
+               document.getElementById('timeline').value &&
+               document.getElementById('budget').value;
+    document.getElementById('btn3').disabled = !ok;
+}
+
+function nextStep(n) {
+    [1,2,3,4].forEach(i => {
+        document.getElementById('step'+i).classList.toggle('hidden', i !== n);
+        const dot = document.getElementById('dot'+i);
+        dot.classList.remove('active','done');
+        if (i < n) dot.classList.add('done');
+        if (i === n) dot.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calculateResults() {
+    const country = data.country;
+    const level = data.level;
+    const age = document.getElementById('age').value;
+    const education = document.getElementById('education').value;
+    const grades = document.getElementById('grades').value;
+    const english = document.getElementById('english').value;
+    const testTaken = document.getElementById('testTaken').value;
+    const testScore = parseFloat(document.getElementById('testScore').value) || 0;
+    const timeline = document.getElementById('timeline').value;
+    const budget = document.getElementById('budget').value;
+
+    let score = 0;
+    const strengths = [];
+    const gaps = [];
+
+    // Age scoring
+    if (['18-20','21-23','24-26'].includes(age)) { score += 15; strengths.push('Your age is ideal for student visa approval'); }
+    else if (age === '27-29') { score += 10; strengths.push('Your age is within the acceptable range'); }
+    else { score += 5; gaps.push({ issue: 'Age 30+ reduces visa approval probability', fix: 'Stronger SOP and genuine student intent documentation needed' }); }
+
+    // Education
+    if (level === 'masters' && education === 'bachelors') { score += 15; strengths.push('Bachelor\'s degree qualifies you for Master\'s programs'); }
+    else if (level === 'masters' && education === 'masters') { score += 15; strengths.push('Your Master\'s degree gives you strong academic standing'); }
+    else if (level === 'bachelors' && education === '12th') { score += 15; strengths.push('12th completed — you qualify for Bachelor\'s programs'); }
+    else if (level === 'bachelors' && education === 'diploma') { score += 12; strengths.push('Diploma holders can apply — some credit transfer possible'); }
+    else { score += 8; gaps.push({ issue: 'Education level may limit program options', fix: 'Pathway programs or foundation courses can bridge the gap' }); }
+
+    // Grades
+    const gradeNum = parseFloat(grades) || 0;
+    const pct = gradeNum <= 10 ? gradeNum * 10 : gradeNum; // Handle CGPA vs %
+    if (pct >= 75) { score += 15; strengths.push(`${grades} — strong academics. Top-tier universities in reach`); }
+    else if (pct >= 60) { score += 10; strengths.push(`${grades} — meets minimum requirements for most universities`); }
+    else if (pct > 0) { score += 5; gaps.push({ issue: `${grades} is below the preferred range (60%+)`, fix: 'Work experience, strong SOP, or pathway programs can compensate' }); }
+    else { gaps.push({ issue: 'Academic scores not provided — hard to assess university eligibility', fix: 'Get your transcripts evaluated by an expert' }); }
+
+    // English
+    if (english === 'fluent') { score += 5; strengths.push('Fluent English — strong foundation for IELTS/PTE'); }
+    else if (english === 'good') { score += 3; }
+    else { gaps.push({ issue: 'Basic English proficiency may affect IELTS score', fix: 'Focused English training before IELTS is recommended' }); }
+
+    // Test score
+    if (testTaken === 'yes' && testScore >= 6.5) { score += 20; strengths.push(`IELTS ${testScore} — meets requirements for most universities`); }
+    else if (testTaken === 'yes' && testScore >= 6.0) { score += 12; gaps.push({ issue: `IELTS ${testScore} — some top universities need 6.5-7.0`, fix: 'Targeted band improvement coaching can push you to 6.5+' }); }
+    else if (testTaken === 'yes' && testScore > 0 && testScore < 6.0) { score += 5; gaps.push({ issue: `IELTS ${testScore} — below minimum for most programs (6.0)`, fix: 'Structured IELTS prep needed — most students improve 1+ band in 8-12 weeks' }); }
+    else if (testTaken === 'yes' && testScore > 10) { /* PTE score */
+        if (testScore >= 58) { score += 20; strengths.push(`PTE ${testScore} — meets requirements`); }
+        else { score += 8; gaps.push({ issue: `PTE ${testScore} — below preferred range`, fix: 'PTE prep can help you reach 58+' }); }
+    }
+    else { score += 0; gaps.push({ issue: 'No IELTS/PTE score yet — this is REQUIRED for visa', fix: 'This is the #1 thing to do now. Expert IELTS coaching typically takes 6-10 weeks' }); }
+
+    // Timeline
+    if (timeline === 'immediate') { score += 10; strengths.push('Ready to start — you can target the next intake'); }
+    else if (timeline === '3months') { score += 8; strengths.push('3-month timeline is realistic for preparation'); }
+    else if (timeline === '6months') { score += 5; }
+    else { score += 2; }
+
+    // Budget
+    const budgetMap = { under15: 'under ₹15L', '15to25': '₹15-25L', '25to40': '₹25-40L', above40: '₹40L+' };
+    if (country === 'Australia') {
+        if (['25to40','above40'].includes(budget)) { score += 15; strengths.push(`Budget ${budgetMap[budget]}/yr covers most Australian programs`); }
+        else if (budget === '15to25') { score += 10; gaps.push({ issue: `Budget ${budgetMap[budget]}/yr — may limit options in Australia (₹12-25L tuition + ₹10-15L living)`, fix: 'Education loans and scholarships can bridge the gap — many students fund 60-70% through loans' }); }
+        else { score += 3; gaps.push({ issue: 'Budget under ₹15L/yr is tight for Australia', fix: 'Scholarship applications + education loan essential. Regional universities have lower costs' }); }
+    } else {
+        if (['15to25','25to40','above40'].includes(budget)) { score += 15; strengths.push(`Budget ${budgetMap[budget]}/yr works well for UK programs`); }
+        else { score += 5; gaps.push({ issue: 'Budget under ₹15L/yr is tight for UK', fix: 'UK Master\'s are only 1 year (vs 2 in other countries) — total cost is often lower. Loans + scholarships help' }); }
+    }
+
+    // Cap score
+    score = Math.min(score, 95);
+
+    // University match
+    let uniCount, uniText;
+    if (score >= 70) { uniCount = country === 'Australia' ? '15-25' : '20-30'; }
+    else if (score >= 50) { uniCount = country === 'Australia' ? '8-15' : '12-20'; }
+    else { uniCount = country === 'Australia' ? '3-8' : '5-12'; }
+
+    const topUnis = country === 'Australia'
+        ? 'University of Melbourne, UNSW, Monash University, University of Queensland, ANU'
+        : 'University of Bristol, University of Glasgow, University of Birmingham, University of Warwick, University of Leeds';
+
+    const costRange = country === 'Australia'
+        ? 'Tuition: ₹12-25 lakhs/yr | Living: ₹10-15 lakhs/yr | Total (2yr Master\'s): ₹44-80 lakhs'
+        : 'Tuition: ₹12-30 lakhs/yr | Living: ₹8-12 lakhs/yr | Total (1yr Master\'s): ₹20-42 lakhs';
+
+    const scholarships = country === 'Australia'
+        ? 'Australia Awards, Destination Australia, university merit scholarships, RTP for research'
+        : 'Chevening Scholarship, Commonwealth Scholarship, GREAT Scholarships, university awards';
+
+    // Render results
+    nextStep(4);
+    const circle = document.getElementById('scoreCircle');
+    circle.className = 'score-circle ' + (score >= 65 ? 'score-high' : score >= 40 ? 'score-med' : 'score-low');
+    document.getElementById('scoreNum').textContent = score;
+
+    if (score >= 65) {
+        document.getElementById('scoreVerdict').textContent = 'Strong Eligibility';
+        document.getElementById('scoreSub').textContent = `You have a strong profile for studying in ${country}. A few optimizations can maximize your chances.`;
+    } else if (score >= 40) {
+        document.getElementById('scoreVerdict').textContent = 'Eligible — Gaps to Address';
+        document.getElementById('scoreSub').textContent = `You qualify for programs in ${country}, but there are specific gaps that could hurt your application.`;
+    } else {
+        document.getElementById('scoreVerdict').textContent = 'Needs Preparation';
+        document.getElementById('scoreSub').textContent = `Studying in ${country} is achievable, but you need to address several areas first.`;
+    }
+
+    document.getElementById('strengths').innerHTML = strengths.map(s => `<div class="result-item">✅ ${s}</div>`).join('');
+
+    document.getElementById('gaps').innerHTML = gaps.length
+        ? gaps.map(g => `<div class="gap-item"><div>⚠️ <strong>${g.issue}</strong><div class="fix">→ ${g.fix}</div></div></div>`).join('')
+        : '<div class="result-item">✅ No major gaps found — you\'re in great shape!</div>';
+
+    document.getElementById('uniMatch').innerHTML = `Based on your profile, you could be eligible for approximately <strong>${uniCount} universities</strong> in ${country}.<br><br>Top matches include: ${topUnis}<br><br><strong>Scholarships to explore:</strong> ${scholarships}`;
+
+    document.getElementById('costEstimate').innerHTML = `${costRange}<br><br><em>Note: Scholarships can reduce costs by 20-50%. Education loans cover up to 90% for eligible students.</em>`;
+
+    // Store data for lead submission
+    data.score = score;
+    data.age = age; data.education = education; data.grades = grades;
+    data.english = english; data.testTaken = testTaken; data.testScore = testScore;
+    data.timeline = timeline; data.budget = budget;
+    data.strengths = strengths; data.gaps = gaps.map(g => g.issue);
+
+    // Update WhatsApp link with score
+    document.getElementById('waBtn').href = `https://wa.me/918217494016?text=${encodeURIComponent(
+        `Hi, I just completed the eligibility check on LeadForge.\n\nScore: ${score}/100\nCountry: ${country}\nLevel: ${level}\nTimeline: ${timeline}\n\nI'd like expert guidance on my profile.`
+    )}`;
+}
+
+function submitLead() {
+    const name = document.getElementById('leadName').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+
+    if (!name || !phone || !email) { alert('Please fill in all fields'); return; }
+
+    const leadData = {
+        ...data, name, phone, email,
+        gaps: data.gaps ? data.gaps.join('; ') : '',
+        strengths: data.strengths ? data.strengths.join('; ') : '',
+    };
+
+    // Send to WhatsApp
+    const msg = `New Qualified Lead via LeadForge\n\nEligibility Score: ${data.score}/100\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nCountry: ${data.country}\nLevel: ${data.level}\nAge: ${data.age}\nEducation: ${data.education}\nGrades: ${data.grades}\nEnglish: ${data.english}\nIELTS/PTE: ${data.testTaken === 'yes' ? data.testScore : 'Not taken'}\nTimeline: ${data.timeline}\nBudget: ${data.budget}\n\nGaps: ${data.gaps ? data.gaps.join(', ') : 'None'}`;
+
+    window.open(`https://wa.me/918217494016?text=${encodeURIComponent(msg)}`, '_blank');
+
+    // Hide form, show thank you
+    document.querySelectorAll('#step4 .form-group, #step4 .btn-primary, #step4 .trust, #step4 .cta-box').forEach(el => el.style.display = 'none');
+    document.getElementById('thankYou').classList.remove('hidden');
+}
+</script>
 </body>
 </html>
