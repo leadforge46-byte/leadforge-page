@@ -475,13 +475,36 @@ function submitLead() {
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKsx7m7bfusFBFYWgK8Re2sEoJDyoCcQFdO3-42DqZqT_QXnDixg4Fna7hOQe0V0Jx/exec";
 
     if (SCRIPT_URL !== "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE") {
-        // Send to Google Apps Script (auto-saves, auto-emails you AND Hurray)
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(leadData),
-        }).then(() => showThankYou(leadData)).catch(() => fallbackWhatsApp(leadData));
+        // Send to Google Apps Script via form submission (avoids CORS issues)
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = SCRIPT_URL;
+        form.target = 'hidden_iframe';
+        form.style.display = 'none';
+
+        for (const [key, val] of Object.entries(leadData)) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = val;
+            form.appendChild(input);
+        }
+
+        // Hidden iframe to prevent page redirect
+        let iframe = document.getElementById('hidden_iframe');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.name = 'hidden_iframe';
+            iframe.id = 'hidden_iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+
+        showThankYou(leadData);
     } else {
         // Fallback: send to your WhatsApp directly
         fallbackWhatsApp(leadData);
